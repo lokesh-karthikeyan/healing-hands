@@ -1,0 +1,28 @@
+<div class="container w-[80%] mx-auto py-5">
+  <div class="navbar flex justify-between items-center">
+    <div>
+      <h1
+        class="
+          self-center text-4xl font-semibold whitespace-nowrap text-sky-950 tracking-wide
+          uppercase
+        "
+      >Healing Hands</h1>
+    </div>
+    <div>
+      <% button_class =
+        "            text-2xl text-white bg-sky-700 hover:bg-sky-800 focus:ring-4
+                                                                  focus:outline-none focus:ring-sky-300 font-bold rounded-lg px-6 py-2.5
+                                                                  text-center inline-flex items-center me-2 dark:bg-sky-600
+                                                                  dark:hover:bg-sky-700 dark:focus:ring-sky-80:w 0 cursor-pointer" %>
+      <% if Current.user %>
+        <button class="<%= button_class %>">
+          Sign out
+        </button>
+      <% else %>
+        <button class="<%= button_class %>">
+          Sign in
+        </button>
+      <% end %>
+    </div>
+  </div>
+</div>
