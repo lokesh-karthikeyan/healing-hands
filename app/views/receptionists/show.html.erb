@@ -1,0 +1,25 @@
+<div class="container w-[80%] mx-auto py-4">
+  <div
+    class="
+      cotainer w-full border-dashed border-2 border-sky-400 py-10 rounded flex
+      flex-col items-center gap-4
+    "
+    data-controller="appointment"
+  >
+    <%= button_tag "Book an Appointment",
+    class:
+      "text-2xl text-white bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-bold rounded-lg px-6 py-2.5 text-center inline-flex items-center me-2 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-80:w 0 cursor-pointer",
+    data: {
+      action: "click->appointment#showModal",
+    } %>
+  </div>
+  <div class="container p-4 pt-10 border-sky-400 border-2 mt-4">
+    <h2 class="text-2xl font-bold text-sky-800 mb-10">Welcome,
+      <%= @name %></h2>
+    <%= turbo_frame_tag "patient_list", class: "grid grid-cols-1 md:grid-cols-2
+      lg:grid-cols-3 min-w-64 gap-4" do %>
+      <%= render partial: "patients/patient", collection: @patients %>
+    <% end %>
+  </div>
+  <%= render partial: "appointment_form" %>
+</div>

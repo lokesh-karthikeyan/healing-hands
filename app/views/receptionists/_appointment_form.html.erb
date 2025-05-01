@@ -1,0 +1,45 @@
+<dialog
+  id="patient-modal"
+  class="bg-sky-200"
+  data-controller="appointment"
+  data-appointment-target="modal"
+>
+  <div class="container w-full">
+    <h1 class="font-bold text-3xl">Patient Details</h1>
+    <%= form_with url: patients_url, class: "contents", data: { turbo_frame: "patient_list" } do |form| %>
+      <div class="my-5">
+        <%= form.label :name, "Name", class: "text-xl font-bold" %>
+        <%= form.text_field :name,
+                        required: true,
+                        autofocus: true,
+                        autocomplete: "username",
+                        placeholder: "Patient's name",
+                        value: params[:name],
+                        class:
+                          "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 min-w-64" %>
+      </div>
+      <div class="my-5">
+        <%= form.label :age, "Age", class: "text-xl font-bold" %>
+        <%= form.number_field :age,
+                          required: true,
+                          placeholder: "Patient's age",
+                          min: 1,
+                          max: 120,
+                          class:
+                            "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+      </div>
+      <div class="my-5">
+        <%= form.label :appointment_date, "Date", class: "text-xl font-bold" %>
+        <%= form.date_field :appointment_date,
+                        required: true,
+                        class:
+                          "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+      </div>
+      <div class="w-full">
+        <%= form.submit "Book Appointment",
+                    class:
+                      "w-full text-center rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-medium cursor-pointer" %>
+      </div>
+    <% end %>
+  </div>
+</dialog>
