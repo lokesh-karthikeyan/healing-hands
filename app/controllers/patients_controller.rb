@@ -20,4 +20,27 @@ class PatientsController < ApplicationController
       )
     end
   end
+
+  def edit
+    @patient = Patient.find(params[:id])
+  end
+
+  def update
+    @patient = Patient.find(params[:id])
+
+    if @patient.update(patient_params)
+      respond_to do |format|
+        format.turbo_stream
+        format.html {
+          redirect_to(receptionist_path(Current.user), notice: "Patient was updated successfully.")
+        }
+      end
+    else
+      render(:edit, alert: "Unable to process this request")
+    end
+  end
+
+  private
+
+  def patient_params = (params.expect(patient: [ :name, :age, :appointment_date ]))
 end
