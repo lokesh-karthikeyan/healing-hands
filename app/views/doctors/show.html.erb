@@ -1,0 +1,43 @@
+<div class="container w-[80%] mx-auto py-4">
+  <div class="container py-4 pt-10 border-sky-400 mt-4">
+    <h2 class="text-3xl font-bold text-sky-800 mb-10">Welcome,
+      <%= @name %></h2>
+  </div>
+  <div class="container">
+    <h3 class="text-2xl font-bold text-sky-800">Patients List</h3>
+    <%= form_with url: doctor_path(Current.user), method: :get, data: { controller: "search" }, class: "mt-5 w-full" do |form| %>
+      <div class="container flex w-full gap-4">
+        <%= form.text_field :query,
+                        value: params[:query],
+                        placeholder: "Search patients...",
+                        data: {
+                          "search-target": "input",
+                        },
+                        class: "px-2 py-1 border rounded-md w-full" %>
+        <%= form.submit "Search",
+                    class:
+                      "px-4 py-3 font-medium bg-orange-300 text-neutal-900 rounded flex items-center cursor-pointer hover:bg-orange-400 focus:ring-4 ring-0 focus:ring-orange-100" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg w-full mt-10">
+    <%= turbo_frame_tag "patients_list" do %>
+      <table
+        class="
+          w-full text-l text-left rtl:text-right text-black-500 dark:text-black-400
+        "
+      >
+        <thead class=" text-xl text-gray-700 uppercase bg-orange-200">
+          <tr>
+            <th scope="col" class="px-6 py-3">Name</th>
+            <th scope="col" class="px-6 py-3">Age</th>
+            <th scope="col" class="px-6 py-3">Appointment Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "patients", collection: @patients %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
