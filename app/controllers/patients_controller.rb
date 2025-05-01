@@ -40,6 +40,16 @@ class PatientsController < ApplicationController
     end
   end
 
+  def destroy
+    @patient = Patient.find(params[:id])
+    @patient.destroy
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to(receptionist_path(Current.user), notice: "Patient deleted successfully!") }
+    end
+  end
+
   private
 
   def patient_params = (params.expect(patient: [ :name, :age, :appointment_date ]))
