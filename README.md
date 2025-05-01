@@ -29,3 +29,11 @@ A **Rails 8** application designed to manage a **Receptionist & Doctor Portal**,
 - Graphs for:
   - **Patients registered per day**
   - **Appointments scheduled per day**
+
+---
+
+## Demo
+
+
+https://github.com/user-attachments/assets/00f9d336-b64a-4752-9804-48beedd668a7
+
