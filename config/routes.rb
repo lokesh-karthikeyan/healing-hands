@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   resources(:passwords, param: :token)
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  resources(:users)
+  resources(:doctors)
+  resources(:receptionists)
+
   unless Current.user
     root("pages#home")
   end
