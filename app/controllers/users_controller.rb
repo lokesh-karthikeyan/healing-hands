@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user_class = params[:role].camelize.constantize
+    user_class = constantize_user_role
     @user = user_class.new(
       full_name: params[:full_name],
       email_address: params[:email_address],
@@ -23,6 +23,18 @@ class UsersController < ApplicationController
       end
     else
       redirect_to(root_path, status: :unprocessable_entity, alert: "Unable to process this request")
+    end
+  end
+
+  private
+
+  def constantize_user_role
+    if params[:role] == "doctor"
+      Doctor
+    elsif params[:role] == "receptionist"
+      Receptionist
+    else
+      raise "Invalid role"
     end
   end
 end
