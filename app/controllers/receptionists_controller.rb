@@ -1,0 +1,2 @@
+class ReceptionistsController < ApplicationController
+end
