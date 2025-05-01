@@ -1,0 +1,39 @@
+<%= turbo_frame_tag "patient_#{patient.id}" do %>
+  <%= form_with model: patient, local: true, class: "
+      w-full p-4 text-center bg-sky-200 border border-sky-200 rounded-lg shadow-sm
+      sm:p-8 dark:bg-sky-200 dark:border-sky-700
+    " do |form| %>
+    <div class="flex flex-col items-start gap-2 my-2">
+      <%= form.label :name, "Name", class: "text-xl font-bold" %>
+      <%= form.text_field :name,
+                      required: true,
+                      autofocus: true,
+                      autocomplete: "username",
+                      placeholder: "Patient's name",
+                      class:
+                        "border rounded-md border-sky-300 w-full px-2 py-2 bg-zinc-50 text-xl text-left" %>
+    </div>
+    <div class="flex flex-col items-start gap-2 my-2">
+      <%= form.label :age, "Age", class: "text-xl font-bold" %>
+      <%= form.number_field :age,
+                        required: true,
+                        placeholder: "Patient's age",
+                        min: 1,
+                        max: 120,
+                        class:
+                          "border rounded-md border-sky-300 w-full px-2 py-2 bg-zinc-50 text-xl text-left" %>
+    </div>
+    <div class="flex flex-col items-start gap-2 my-2">
+      <%= form.label :appointment_date, "Appointment Date", class: "text-xl font-bold" %>
+      <%= form.date_field :appointment_date,
+                      required: true,
+                      class:
+                        "border rounded-md border-sky-300 w-full px-2 py-2 bg-zinc-50 text-xl text-left" %>
+    </div>
+    <div class="w-full mt-5">
+      <%= form.submit "Book Appointment",
+                  class:
+                    "w-full text-center rounded-md px-3.5 py-2.5 bg-green-600 hover:bg-green-500 text-white font-medium cursor-pointer" %>
+    </div>
+  <% end %>
+<% end %>
