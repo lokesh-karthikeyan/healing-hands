@@ -11,13 +11,17 @@
     <div data-controller="registration">
       <% button_class =
         "            text-2xl text-white bg-sky-700 hover:bg-sky-800 focus:ring-4
-                                                                        focus:outline-none focus:ring-sky-300 font-bold rounded-lg px-6 py-2.5
-                                                                        text-center inline-flex items-center me-2 dark:bg-sky-600
-                                                                        dark:hover:bg-sky-700 dark:focus:ring-sky-80:w 0 cursor-pointer" %>
+                                                                              focus:outline-none focus:ring-sky-300 font-bold rounded-lg px-6 py-2.5
+                                                                              text-center inline-flex items-center me-2 dark:bg-sky-600
+                                                                              dark:hover:bg-sky-700 dark:focus:ring-sky-80:w 0 cursor-pointer" %>
       <% if Current.user %>
-        <button class="<%= button_class %>" data-action="click->registration#showModal">
-          Sign out
-        </button>
+        <%= link_to "Sign out",
+        session_path,
+        method: :delete,
+        data: {
+          turbo_method: :delete,
+        },
+        class: button_class %>
       <% else %>
         <button class="<%= button_class %>" data-action="click->registration#showModal">
           Sign in
