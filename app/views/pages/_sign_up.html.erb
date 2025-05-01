@@ -1,0 +1,73 @@
+<template class="sign-up">
+  <div class="sign-up-content">
+    <h1 class="font-bold text-3xl">Sign up</h1>
+    <%= form_with url: users_url, class: "contents" do |form| %>
+      <div class="my-5">
+        <%= form.text_field :full_name,
+                        required: true,
+                        autofocus: true,
+                        autocomplete: "username",
+                        placeholder: "Enter your full name",
+                        value: params[:full_name],
+                        class:
+                          "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+      </div>
+      <div class="my-5">
+        <%= form.email_field :email_address,
+                         required: true,
+                         autocomplete: "username",
+                         placeholder: "Enter your email address",
+                         value: params[:email_address],
+                         class:
+                           "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+      </div>
+      <div class="my-5">
+        <%= form.password_field :password,
+                            required: true,
+                            autocomplete: "current-password",
+                            placeholder: "Enter your password",
+                            maxlength: 72,
+                            class:
+                              "block shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2 w-full" %>
+      </div>
+      <div class="my-5">
+        <%= form.radio_button :role,
+                          "doctor",
+                          id: "doctor",
+                          required: true,
+                          value: params[:type],
+                          class:
+                            "shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2" %>
+        <%= form.label :role, "Are you a Doctor?", for: "doctor", class: "text-gray-700" %>
+      </div>
+      <div class="my-5">
+        <%= form.radio_button :role,
+                          "receptionist",
+                          id: "receptionist",
+                          required: true,
+                          value: params[:type],
+                          class:
+                            "shadow-sm rounded-md border border-gray-400 focus:outline-blue-600 px-3 py-2 mt-2" %>
+        <%= form.label :role,
+                   "Are you a Receptionist?",
+                   for: "receptionist",
+                   class: "text-gray-700" %>
+      </div>
+      <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
+        <div class="inline">
+          <%= form.submit "Sign up",
+                      class:
+                        "w-full sm:w-auto text-center rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer" %>
+        </div>
+        <div class="mt-4 text-sm text-gray-500 sm:mt-0" data-controller="registration">
+          <%= button_tag "Already have an account? Sign in",
+          type: "button",
+          class: "text-gray-700 underline hover:no-underline sign-up-link",
+          data: {
+            action: "click->registration#toggleSignInForm",
+          } %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</template>
