@@ -9,11 +9,10 @@
       >Healing Hands</h1>
     </div>
     <div data-controller="registration">
-      <% button_class =
-        "            text-2xl text-white bg-sky-700 hover:bg-sky-800 focus:ring-4
-                                                                              focus:outline-none focus:ring-sky-300 font-bold rounded-lg px-6 py-2.5
-                                                                              text-center inline-flex items-center me-2 dark:bg-sky-600
-                                                                              dark:hover:bg-sky-700 dark:focus:ring-sky-80:w 0 cursor-pointer" %>
+      <% sign_in_button_class =
+        "text-2xl text-white bg-sky-700 hover:bg-sky-800 focus:ring-4 focus:outline-none focus:ring-sky-300 font-bold rounded-lg px-6 py-2.5 text-center inline-flex items-center me-2 dark:bg-sky-600 dark:hover:bg-sky-700 dark:focus:ring-sky-80:w 0 cursor-pointer" %>
+      <% sign_out_button_class =
+        "text-2xl text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-bold rounded-lg px-6 py-2.5 text-center inline-flex items-center me-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-80:w 0 cursor-pointer" %>
       <% if Current.user %>
         <%= link_to "Sign out",
         session_path,
@@ -21,9 +20,12 @@
         data: {
           turbo_method: :delete,
         },
-        class: button_class %>
+        class: sign_out_button_class %>
       <% else %>
-        <button class="<%= button_class %>" data-action="click->registration#showModal">
+        <button
+          class="<%= sign_in_button_class %>"
+          data-action="click->registration#showModal"
+          >
           Sign in
         </button>
       <% end %>
