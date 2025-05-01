@@ -1,4 +1,6 @@
 class DoctorsController < ApplicationController
+  before_action :authorize_doctor, only: [ :show ]
+
   def show
     @name = Current.user.full_name.split(" ").first.capitalize
     @patients = Patient.all
@@ -10,5 +12,11 @@ class DoctorsController < ApplicationController
     else
       @patients = Patient.all
     end
+  end
+
+  private
+
+  def authorize_doctor
+    redirect_to(root_path, alert: "Unauthorized!") unless Current.user.is_a?(Doctor)
   end
 end
