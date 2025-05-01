@@ -1,24 +1,31 @@
-# README
+# Healing Hands ⚕️
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
+A **Rails 8** application designed to manage a **Receptionist & Doctor Portal**, enabling:
+- **Secure Authentication** (Rails 8 Auth)
+- **User Role Management** via **Single Table Inheritance (STI)**
+- **Patient Registration & Management**
+- **Analytics & Data Visualization** with **Chartkick**
+- **Tailwind CSS** for styling
 
-Things you may want to cover:
+---
 
-* Ruby version
+## Features
+### 🔐 **Authentication & Role Management**
+- Single **Login Page** for Receptionists & Doctors (implemented using **Rails 8 Auth**)
+- **STI-based Users** (`Doctor`, `Receptionist` subclasses) for role separation
+- Each role has **independent dashboards** with **restricted access**
 
-* System dependencies
+### 🏥 **Receptionist Portal**
+- Can **register new patients** and **perform CRUD operations** on patient records
 
-* Configuration
+### 🩺 **Doctor Portal**
+- View **all registered patients**
+- Access **visual analytics** for **patient registrations vs appointment dates**
+- View **real-time search & filtering** with Turbo Streams
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 📊 **Data Visualization**
+- **Chartkick** for interactive **graphs**
+- Graphs for:
+  - **Patients registered per day**
+  - **Appointments scheduled per day**
