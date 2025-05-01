@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources(:users)
-  resources(:doctors)
-  resources(:receptionists)
+  resources(:doctors, only: [ :show ])
+  resources(:receptionists, only: [ :show ])
+  resources(:patients, only: [ :create, :edit, :update, :destroy ])
 
   unless Current.user
     root("pages#home")
